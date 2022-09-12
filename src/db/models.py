@@ -1,12 +1,8 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.orm import relationship
 from external_requests import GetWeatherRequest
 
-# Создание сессии
-SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
-engine = create_engine(SQLALCHEMY_DATABASE_URI)
-Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Подключение базы (с автоматической генерацией моделей)
 Base = declarative_base()
@@ -78,6 +74,3 @@ class PicnicRegistration(Base):
 
     def __repr__(self):
         return f'<Регистрация {self.id}>'
-
-
-Base.metadata.create_all(bind=engine)

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-from external_requests import GetWeatherRequest
+from services.external_requests import GetWeatherRequest
 
 
 # Подключение базы (с автоматической генерацией моделей)

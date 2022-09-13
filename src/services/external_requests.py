@@ -66,8 +66,7 @@ class GetWeatherRequest():
         if r is None:
             return None
         else:
-            weather = self.get_weather_from_response(r)
-            return weather
+            return self.get_weather_from_response(r)
 
 
 class CheckCityExisting():
@@ -103,8 +102,7 @@ class CheckCityExisting():
         Returns:
 
         """
-        r = self.session.get(url)
-        return r
+        return self.session.get(url)
 
     def check_existing(self, city):
         """

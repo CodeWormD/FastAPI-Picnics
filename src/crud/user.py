@@ -1,8 +1,6 @@
 from sqlalchemy.orm import Session
-from sqlalchemy import or_
-from typing import List, Optional, Union
 from db.models import User
-from fastapi import HTTPException
+
 
 
 def create_user(

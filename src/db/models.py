@@ -40,6 +40,8 @@ class User(Base):
     name = Column(String, nullable=False)
     surname = Column(String, nullable=False)
     age = Column(Integer, nullable=True)
+    
+    picnics = relationship('PicnicRegistration', back_populates = 'user', lazy='joined')
 
     def __repr__(self):
         return f'<Пользователь {self.surname} {self.name}>'
@@ -55,6 +57,8 @@ class Picnic(Base):
     city_id = Column(Integer, ForeignKey('city.id'), nullable=False)
     time = Column(DateTime, nullable=False)
 
+    users = relationship('PicnicRegistration', back_populates = 'picnic', lazy='joined')
+    
     def __repr__(self):
         return f'<Пикник {self.id}>'
 
@@ -69,8 +73,8 @@ class PicnicRegistration(Base):
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     picnic_id = Column(Integer, ForeignKey('picnic.id'), nullable=False)
 
-    user = relationship('User', backref='picnics')
-    picnic = relationship('Picnic', backref='users')
+    user = relationship('User', back_populates='picnics')
+    picnic = relationship('Picnic', back_populates='users')
 
     def __repr__(self):
         return f'<Регистрация {self.id}>'

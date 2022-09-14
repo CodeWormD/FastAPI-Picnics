@@ -1,5 +1,3 @@
-from datetime import datetime
-from typing import Optional
 from pydantic import BaseModel
 
 
@@ -8,7 +6,6 @@ class CityResponseScheme(BaseModel):
     name: str
     weather: float
 
-    
     class Config:
         orm_mode = True
 

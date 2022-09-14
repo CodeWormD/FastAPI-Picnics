@@ -1,6 +1,5 @@
 import requests
 
-
 WEATHER_API_KEY = 'da9112fbed5939fa39dd0bf52bc49357'
 
 

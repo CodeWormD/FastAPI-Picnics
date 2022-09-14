@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from db.models import User
 
+from db.models import User
 
 
 def create_user(
@@ -25,8 +25,9 @@ def get_user_list(
     min: int,
     max: int,
 ) -> list[User] | User:
-    if  min and max != None:
-        return db.query(User).filter((User.age >= min), (User.age <= max)).all()
+    if min and max != None:
+        return (db.query(User)
+                .filter((User.age >= min), (User.age <= max)).all())
     elif min != None:
         return db.query(User).filter((User.age >= min)).all()
     elif max != None:

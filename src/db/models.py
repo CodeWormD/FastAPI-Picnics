@@ -1,8 +1,8 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-from services.external_requests import GetWeatherRequest
 
+from services.external_requests import GetWeatherRequest
 
 # Подключение базы (с автоматической генерацией моделей)
 Base = declarative_base()
@@ -40,8 +40,10 @@ class User(Base):
     name = Column(String, nullable=False)
     surname = Column(String, nullable=False)
     age = Column(Integer, nullable=True)
-    
-    picnics = relationship('PicnicRegistration', back_populates = 'user', lazy='joined')
+
+    picnics = relationship('PicnicRegistration',
+                           back_populates='user',
+                           lazy='joined')
 
     def __repr__(self):
         return f'<Пользователь {self.surname} {self.name}>'
@@ -57,8 +59,10 @@ class Picnic(Base):
     city_id = Column(Integer, ForeignKey('city.id'), nullable=False)
     time = Column(DateTime, nullable=False)
 
-    users = relationship('PicnicRegistration', back_populates = 'picnic', lazy='joined')
-    
+    users = relationship('PicnicRegistration',
+                         back_populates='picnic',
+                         lazy='joined')
+
     def __repr__(self):
         return f'<Пикник {self.id}>'
 

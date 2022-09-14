@@ -1,15 +1,10 @@
-from fastapi import APIRouter, Query, Depends, HTTPException
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
-from typing import List
+
 from crud import city
 from db.database import get_db
-from typing import Union, Optional
 
-from .schemes import (
-    CityResponseScheme,
-    CreateCityScheme,
-    GetCityScheme)
-
+from .schemes import CityResponseScheme, CreateCityScheme
 
 router = APIRouter(
     prefix='/city',

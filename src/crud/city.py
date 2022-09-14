@@ -1,7 +1,7 @@
-from sqlalchemy.orm import Session
-from typing import List, Optional, Union
-from db.models import City
 from fastapi import HTTPException
+from sqlalchemy.orm import Session
+
+from db.models import City
 from services.external_requests import CheckCityExisting
 
 
@@ -17,11 +17,9 @@ def get_city(
     city = db.query(City).filter(City.name == name.capitalize()).first()
 
     if city is None:
-       raise HTTPException(
+        raise HTTPException(
             status_code=400,
             detail='Такого города нету в базе')
-       
-
     return {'id': city.id, 'name': city.name, 'weather': city.weather}
 
 
@@ -42,7 +40,6 @@ def create_city(
             detail='Параметр city должен быть существующим городом')
 
 
-
 def get_city_list(
     db: Session,
     q: str | None = None
@@ -51,4 +48,3 @@ def get_city_list(
         return get_city(db, q)
     cities = db.query(City).all()
     return [{'id': city.id, 'name': city.name, 'weather': city.weather} for city in cities]
-    

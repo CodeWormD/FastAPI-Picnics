@@ -1,6 +1,8 @@
-from sqlalchemy.orm import Session, joinedload
-from db.models import Picnic, PicnicRegistration, User, City
 from datetime import datetime
+
+from sqlalchemy.orm import Session, joinedload
+
+from db.models import Picnic, PicnicRegistration, User
 
 
 def create_picnic(
@@ -15,7 +17,7 @@ def create_picnic(
     return picnic
 
 
-# надо переписать и сформировать ответ вручную
+# надо переписать и сформировать ответ вручную под шаблон схемы
 def get_picnic_list(
     db: Session,
 ) -> list[Picnic]:

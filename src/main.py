@@ -1,4 +1,6 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
+
+from routers.router import router
 
 
 def create_app():
@@ -14,7 +16,6 @@ def create_app():
 def _include_routers(app_: FastAPI):
     """Include one router which include all need routers"""
 
-    from routers.router import router
 
     app_.include_router(router)
 

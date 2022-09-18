@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session
 
 from crud import city
 from db.database import get_db
-
 from .schemes import CityResponseScheme, CreateCityScheme
 
 router = APIRouter(

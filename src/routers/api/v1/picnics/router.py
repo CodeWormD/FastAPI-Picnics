@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session
 
 from crud import picnic
 from db.database import get_db
-
 from .schemes import PicnicListModel, PicnicModel, PicnicRegModel
 
 router = APIRouter(

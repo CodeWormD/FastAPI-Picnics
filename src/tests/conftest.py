@@ -41,8 +41,6 @@ def db():
     close_all_sessions()
     drop_database(dburl)
 
-app.dependency_overrides[get_db] = db
-
 @pytest.fixture()
 def client(db) -> Generator:
     app.dependency_overrides[get_db] = db

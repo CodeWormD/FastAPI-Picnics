@@ -11,12 +11,12 @@ city1 = {
 }
 
 
-def test_post_city(client, db):
+def test_post_city(client):
     response = client.post('/api/v1/city/create/', json=city1)
     assert response.status_code == 200
 
 
-def test_get_city(client, db):
-    response = client.get('/api/v1/city/?name=Anapa')
+def test_get_city(client):
+    response = client.get('/api/v1/city/?name=Санкт-Петербург')
     assert response.status_code == 200
-    assert response.json()['name'] == 'Anapa'
+    assert response.json()['name'] == 'Санкт-Петербург'
